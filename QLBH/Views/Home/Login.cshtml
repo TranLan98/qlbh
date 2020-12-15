@@ -1,0 +1,37 @@
+﻿@model QLBH.Models.user
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="text-danger">@ViewBag.LoginError</h1>
+
+<div class="container">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="card">
+                <h2>Login</h2>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.email, "Email :")
+                    @Html.TextBoxFor(m => m.email, "", new { @class = "form-control", @placeholder = "email" })
+                    @Html.ValidationMessageFor(m => m.email, "", new { @class = "badge badge-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.password, "Mật khẩu :")
+                    @Html.PasswordFor(m => m.password, new { @class = "form-control ", @placeholder = " password" })
+                    @Html.ValidationMessageFor(m => m.password, "", new { @class = "badge badge-danger" })
+                </div>
+
+  
+                <div class="form-group">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>
+
